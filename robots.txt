@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://spicemantranyc.com/sitemap.xml
+Sitemap: https://staging.kora-a0266737-7812-4c91-abd7-03b3f69f340b.pages.dev/sitemap.xml
