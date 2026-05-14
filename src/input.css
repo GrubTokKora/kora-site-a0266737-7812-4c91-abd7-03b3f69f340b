@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "./_kora_tailwind_play_theme.css";
+@source "../**/*.html";
+@source "../assets/**/*.js";
