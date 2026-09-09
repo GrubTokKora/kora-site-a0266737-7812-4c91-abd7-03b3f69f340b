@@ -1,4 +1,4 @@
-# Site index · format 1
+# Site index · format 2
 Structure and the names of what each page offers. Values that change often — prices, hours, phone,
 address — and body copy are deliberately not recorded here; read the page itself for those.
 
@@ -18,6 +18,12 @@ sections:
 - `#faq` "Frequently Asked" — an accordion covering: vegetarian, reservation, takeout or delivery, hours of operation
 also: The dish rows repeat the same markup per dish, so a change to one row's structure has to be made to all 91 rows.
 also: The FAQ answers name the Reserve a Table and Order Online buttons by their on-screen labels, so renaming either button leaves the FAQ telling the visitor to look for something that is no longer there.
+
+## support files
+Files that are not pages. A line marked [content] holds words or data a visitor reads, so a
+change to the site's content can land there; the rest only make the site work or look right.
+- `robots.txt` — crawler rules and the sitemap link — derived from the site by the deploy, not written by hand
+- `sitemap.xml` — the list of page URLs — derived from the site by the deploy, not written by hand
 
 ## shared (every page)
 The header, navigation, mobile menu and footer are propagated from index.html to every other page by
