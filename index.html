@@ -338,22 +338,25 @@ body{
 .menu-body{display:grid;grid-template-columns:1fr 1.35fr;gap:2.5rem;max-width:1200px;margin:0 auto;padding:0 var(--gutter)}
 .menu-image-col{position:sticky;top:100px;height:fit-content}
 .menu-image-col img{width:100%;border-radius:6px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:block;border:1px solid rgba(255,255,255,.06)}
+/* The menu is drawn by Kora into the kora:data:menu region; these rules give it this site's look. */
 .menu-categories{display:flex;flex-direction:column;gap:2.25rem}
-.menu-category{scroll-margin-top:100px}
-.menu-cat-title{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(227,24,55,.35);border-left:3px solid var(--brand-red);padding:.5rem 1.35rem;font-family:var(--font-body);font-size:.78rem;font-weight:700;color:#fff;margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.14em}
-.menu-cat-title::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand-green);flex-shrink:0}
-.menu-items{display:flex;flex-direction:column}
-.menu-item{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:background .2s}
-.menu-item:hover{background:rgba(255,255,255,.02)}
-.menu-item:hover .menu-item-name{color:var(--brand-green)}
-.menu-item-top{display:flex;align-items:baseline;gap:.65rem}
-.menu-item-name{font-family:var(--font-body);font-size:.9rem;font-weight:600;color:rgba(255,255,255,.95);text-transform:uppercase;letter-spacing:.055em;white-space:normal;transition:color .2s}
-.menu-item-dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.15);min-width:16px;position:relative;top:-3px}
-.menu-item-price{font-family:var(--font-body);font-size:.95rem;font-weight:700;color:var(--brand-green);white-space:nowrap;letter-spacing:.02em;font-variant-numeric:tabular-nums}
-.menu-item-desc{font-family:var(--font-body);font-size:.8125rem;font-weight:400;color:rgba(255,255,255,.5);margin-top:.28rem;line-height:1.5;max-width:92%;letter-spacing:.01em}
-.menu-badge{display:inline-block;font-family:var(--font-body);font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;background:var(--brand-red);color:#fff;padding:.12rem .45rem;border-radius:2px;margin-left:.35rem;vertical-align:middle}
+.kora-menu{display:flex;flex-direction:column;gap:2.25rem}
+.kora-menu .kora-menu__nav{display:none}
+.kora-menu .kora-menu__section{margin:0;scroll-margin-top:100px}
+.kora-menu .kora-menu__section-title{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(227,24,55,.35);border-left:3px solid var(--brand-red);padding:.5rem 1.35rem;font-family:var(--font-body);font-size:.78rem;font-weight:700;color:#fff;margin:0 0 .9rem;text-transform:uppercase;letter-spacing:.14em}
+.kora-menu .kora-menu__section-title::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand-green);flex-shrink:0}
+.kora-menu .kora-menu__items{display:flex;flex-direction:column;gap:0}
+.kora-menu .kora-menu__item{display:block;padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:background .2s}
+.kora-menu .kora-menu__item:hover{background:rgba(255,255,255,.02)}
+.kora-menu .kora-menu__item:hover .kora-menu__item-name{color:var(--brand-green)}
+.kora-menu .kora-menu__item-head{display:flex;align-items:baseline;gap:.65rem}
+.kora-menu .kora-menu__item-head::after{content:'';order:1;flex:1;border-bottom:1px dotted rgba(255,255,255,.15);min-width:16px;position:relative;top:-3px}
+.kora-menu .kora-menu__item-name{order:0;margin:0;font-family:var(--font-body);font-size:.9rem;font-weight:600;color:rgba(255,255,255,.95);text-transform:uppercase;letter-spacing:.055em;white-space:normal;transition:color .2s}
+.kora-menu .kora-menu__item-price{order:2;font-family:var(--font-body);font-size:.95rem;font-weight:700;color:var(--brand-green);white-space:nowrap;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.kora-menu .kora-menu__item-desc{font-family:var(--font-body);font-size:.8125rem;font-weight:400;color:rgba(255,255,255,.5);opacity:1;margin:.28rem 0 0;line-height:1.5;max-width:92%;letter-spacing:.01em}
+.kora-menu .kora-menu__item-note{display:inline-block;font-family:var(--font-body);font-size:.58rem;font-weight:700;font-style:normal;text-transform:uppercase;letter-spacing:.07em;background:var(--brand-red);color:#fff;opacity:1;padding:.12rem .45rem;border-radius:2px;margin:.35rem 0 0}
 @media(max-width:900px){.menu-body{grid-template-columns:1fr}.menu-image-col{display:none}}
-@media(max-width:768px){.menu-item-name{font-size:.85rem}.menu-item-price{font-size:.9rem}}
+@media(max-width:768px){.kora-menu .kora-menu__item-name{font-size:.85rem}.kora-menu .kora-menu__item-price{font-size:.9rem}}
 
 /* Hours & location — light */
 .hours-location{background:#fff;padding:var(--section-pad) 0}
@@ -589,186 +592,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <img alt="Tandoori Indian dish at Spice Mantra, Midtown NY" id="menuParallaxImg" src="https://quseprdus1.blob.core.windows.net/kora-business-images/1bb77e5d-9379-43cd-96a3-b1f7e6d5a368_1768780927.png"/>
 </div>
 <div class="menu-categories" id="menuCategories">
-<!-- Soups -->
-<div class="menu-category" data-img="0">
-<span class="menu-cat-title reveal">Soups</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Mulligatawny Soup</span><span class="menu-item-dots"></span><span class="menu-item-price">$7.95</span></div><p class="menu-item-desc">Mildly spiced rich lentil soup</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Sweet Corn Soup</span><span class="menu-item-dots"></span><span class="menu-item-price">$7.95</span></div><p class="menu-item-desc">Sweet corn, soy sauce with scallion</p></div>
-</div>
-</div>
-<!-- Salad -->
-<div class="menu-category" data-img="1">
-<span class="menu-cat-title reveal">Salad</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Sprout Salad</span><span class="menu-item-dots"></span><span class="menu-item-price">$9.95</span></div><p class="menu-item-desc">Mung bean sprout, onion, tomatoes &amp; lime juice</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Avocado Salad</span><span class="menu-item-dots"></span><span class="menu-item-price">$9.95</span></div><p class="menu-item-desc">Romaine lettuce, avocado, onion &amp; cherry tomatoes</p></div>
-</div>
-</div>
-<!-- Appetizers -->
-<div class="menu-category" data-img="2">
-<span class="menu-cat-title reveal">Appetizers</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Bhel Puri</span><span class="menu-item-dots"></span><span class="menu-item-price">$7.95</span></div><p class="menu-item-desc">Puffed rice, onions, crispy noodles, mint &amp; tamarind chutney</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Dahi Aloo Puri</span><span class="menu-item-dots"></span><span class="menu-item-price">$7.95</span></div><p class="menu-item-desc">Mini puri, mashed potatoes, yogurt, mint &amp; tamarind chutney</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Samosa</span><span class="menu-item-dots"></span><span class="menu-item-price">$7.50</span></div><p class="menu-item-desc">Crispy turnovers, seasoned potatoes &amp; green peas</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Gobi Malligai</span><span class="menu-item-dots"></span><span class="menu-item-price">$9.95</span></div><p class="menu-item-desc">Crispy cauliflower marinated with mint and cilantro</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Onion Bhaji</span><span class="menu-item-dots"></span><span class="menu-item-price">$9.95</span></div><p class="menu-item-desc">Batter fried onion fritters</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Tofu Tandoori</span><span class="menu-item-dots"></span><span class="menu-item-price">$10.95</span></div><p class="menu-item-desc">Tofu marinated w/herbs &amp; spices cooked in clay oven</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Kalmi Kabab</span><span class="menu-item-dots"></span><span class="menu-item-price">$11.95</span></div><p class="menu-item-desc">Spiced chicken wings from clay oven</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Coriander Chicken</span><span class="menu-item-dots"></span><span class="menu-item-price">$11.95</span></div><p class="menu-item-desc">Chicken marinated w/coriander, herbs &amp; spices cooked in clay oven</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Jhinga Ka Nasha</span><span class="menu-item-dots"></span><span class="menu-item-price">$14.95</span></div><p class="menu-item-desc">Tandoori grilled shrimp, saffron flavored creamy sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Tandoori Soy Chaap <span class="menu-badge">Must Try</span></span><span class="menu-item-dots"></span><span class="menu-item-price">$10.95</span></div><p class="menu-item-desc">Soy chaap marinated with chefs special sauce</p></div>
-</div>
-</div>
-<!-- Indo-Chinese -->
-<div class="menu-category" data-img="0">
-<span class="menu-cat-title reveal">Indo-Chinese</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Gobi Manchurian <span class="menu-note">(small plate)</span></span><span class="menu-item-dots"></span><span class="menu-item-price">$12.95</span></div><p class="menu-item-desc">Cauliflower batter fried florets sauteed with onion, bell pepper, ginger &amp; garlic sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chilli Paneer <span class="menu-note">(small plate)</span></span><span class="menu-item-dots"></span><span class="menu-item-price">$13.95</span></div><p class="menu-item-desc">Cottage cheese cube stir-fried with onion, bell pepper &amp; garlic infused chili sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Chilli</span><span class="menu-item-dots"></span><span class="menu-item-price">$18.95</span></div><p class="menu-item-desc">Boneless chicken stir fried with onion, bell pepper &amp; garlic infused chilli sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Manchurian</span><span class="menu-item-dots"></span><span class="menu-item-price">$18.95</span></div><p class="menu-item-desc">Boneless chicken cooked in ginger &amp; garlic infused sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Hakka Noodle</span><span class="menu-item-dots"></span><span class="menu-item-price">$13.95</span></div><p class="menu-item-desc">Egg noodles, carrot, cabbage &amp; bell peppers</p></div>
-</div>
-</div>
-<!-- Vegetarian -->
-<div class="menu-category" data-img="1">
-<span class="menu-cat-title reveal">Vegetarian</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Tadka Dal</span><span class="menu-item-dots"></span><span class="menu-item-price">$15.95</span></div><p class="menu-item-desc">Yellow lentil &amp; tomatoes tempered with cumin seeds</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Dal Makhani</span><span class="menu-item-dots"></span><span class="menu-item-price">$15.95</span></div><p class="menu-item-desc">Slow cooked black lentils, creamy onion sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chana Masala</span><span class="menu-item-dots"></span><span class="menu-item-price">$15.95</span></div><p class="menu-item-desc">Chickpeas cooked in roasted herbs &amp; spices with fresh tomato sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Allepey Veg Curry</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Chef signature coconut, mango veg curry</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Aloo Gobi</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Potatoes, cauliflower, tomatoes &amp; ginger</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Saag Paneer</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Paneer, spinach with freshly ground spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Malai Kofta</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Mixed vegetables dumplings with potatoes &amp; dry fruit spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Mirch Baigan Salan</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Baby eggplant, stuffed pepper in tamarind, peanut &amp; sesame seed sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Mattar Paneer</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Green peas, paneer cheese in creamy sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Baingan Bharta</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Smoked eggplant puree sauteed with tomatoes, green peas, onions &amp; spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Aamchur Bhindi</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Fresh okra cooked with dry mango &amp; spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Navaratna Korma</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Assorted vegetables cooked in creamy almond sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Paneer Tikka Masala</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Paneer cheese in creamy tomato sauce</p></div>
-</div>
-</div>
-<!-- Chicken -->
-<div class="menu-category" data-img="2">
-<span class="menu-cat-title reveal">Chicken</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Tikka Masala</span><span class="menu-item-dots"></span><span class="menu-item-price">$19.95</span></div><p class="menu-item-desc">Tandoori boneless chicken in creamy tomato &amp; fenugreek sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Chettinad</span><span class="menu-item-dots"></span><span class="menu-item-price">$19.95</span></div><p class="menu-item-desc">Classic south Indian hot &amp; spicy chicken curry</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Madras</span><span class="menu-item-dots"></span><span class="menu-item-price">$19.95</span></div><p class="menu-item-desc">Boneless chicken, curry leaves, red chili, fresh coconut &amp; mustard seed</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Kadai Chicken</span><span class="menu-item-dots"></span><span class="menu-item-price">$19.95</span></div><p class="menu-item-desc">Boneless chicken, onion, bell pepper &amp; cherry tomato</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Korma</span><span class="menu-item-dots"></span><span class="menu-item-price">$19.95</span></div><p class="menu-item-desc">Boneless chicken in rich cashew nut &amp; almond sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Butter Chicken</span><span class="menu-item-dots"></span><span class="menu-item-price">$19.95</span></div><p class="menu-item-desc">Boneless chicken, bell pepper in creamy tomato sauce</p></div>
-</div>
-</div>
-<!-- Lamb & Goat -->
-<div class="menu-category" data-img="0">
-<span class="menu-cat-title reveal">Lamb &amp; Goat</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lamb Vindaloo</span><span class="menu-item-dots"></span><span class="menu-item-price">$23.95</span></div><p class="menu-item-desc">Hot &amp; tangy Goan style spicy lamb curry</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lamb Saag</span><span class="menu-item-dots"></span><span class="menu-item-price">$23.95</span></div><p class="menu-item-desc">Lamb, spinach, ginger &amp; spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lamb Madras</span><span class="menu-item-dots"></span><span class="menu-item-price">$23.95</span></div><p class="menu-item-desc">Lamb, curry leaves, red chili, fresh coconut &amp; mustard seed</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lamb Pasanda</span><span class="menu-item-dots"></span><span class="menu-item-price">$23.95</span></div><p class="menu-item-desc">Lamb cooked in creamy almond sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lamb Roganjosh</span><span class="menu-item-dots"></span><span class="menu-item-price">$23.95</span></div><p class="menu-item-desc">Kashmiri style lamb in shallots, yogurt &amp; aromatic spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Goat Curry</span><span class="menu-item-dots"></span><span class="menu-item-price">$28.95</span></div><p class="menu-item-desc">Bone in goat with freshly ground spices, onion &amp; tomato gravy</p></div>
-</div>
-</div>
-<!-- Seafood -->
-<div class="menu-category" data-img="1">
-<span class="menu-cat-title reveal">Seafood Delight</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Shrimp Kabab Masala</span><span class="menu-item-dots"></span><span class="menu-item-price">$24.95</span></div><p class="menu-item-desc">Tandoori shrimp in creamy onion tomato sauce</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Shrimp Madras</span><span class="menu-item-dots"></span><span class="menu-item-price">$24.95</span></div><p class="menu-item-desc">Shrimp, curry leaves, red chili, fresh coconut &amp; mustard seeds</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Shrimp Vindaloo</span><span class="menu-item-dots"></span><span class="menu-item-price">$24.95</span></div><p class="menu-item-desc">Hot &amp; tangy Goan style spicy shrimp curry</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Allepey Fish Curry</span><span class="menu-item-dots"></span><span class="menu-item-price">$26.95</span></div><p class="menu-item-desc">Chef signature mango curry with coconut milk</p></div>
-</div>
-</div>
-<!-- Tandoor -->
-<div class="menu-category" data-img="2">
-<span class="menu-cat-title reveal">Tandoor</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Tandoori Salmon</span><span class="menu-item-dots"></span><span class="menu-item-price">$25.95</span></div><p class="menu-item-desc">Salmon marinated w/ Kashmiri chilies, cinnamon &amp; black pepper</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Tandoori</span><span class="menu-item-dots"></span><span class="menu-item-price">$18.95</span></div><p class="menu-item-desc">Chicken marinated with hung yogurt, Kashmiri chilies &amp; spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Tikka</span><span class="menu-item-dots"></span><span class="menu-item-price">$19.95</span></div><p class="menu-item-desc">Boneless chicken marinated with hung yogurt</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Paneer Tikka</span><span class="menu-item-dots"></span><span class="menu-item-price">$17.95</span></div><p class="menu-item-desc">Cubed paneer cheese with bell peppers &amp; onions</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Malai Kabab</span><span class="menu-item-dots"></span><span class="menu-item-price">$20.95</span></div><p class="menu-item-desc">Chicken tenders grilled to perfection</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Seekh Kabab</span><span class="menu-item-dots"></span><span class="menu-item-price">$22.95</span></div><p class="menu-item-desc">Minced lamb kabab cooked in tandoor</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Tandoori Shrimp</span><span class="menu-item-dots"></span><span class="menu-item-price">$25.95</span></div><p class="menu-item-desc">Shrimp marinated w/ Kashmiri chilies, hung yogurt, lemon</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lamb Chops</span><span class="menu-item-dots"></span><span class="menu-item-price">$29.95</span></div><p class="menu-item-desc">Lamb chops in tandoori masala &amp; crushed peppers</p></div>
-</div>
-</div>
-<!-- Rice -->
-<div class="menu-category" data-img="0">
-<span class="menu-cat-title reveal">Rice</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lemon Rice</span><span class="menu-item-dots"></span><span class="menu-item-price">$9.95</span></div><p class="menu-item-desc">Lemon flavored rice with mustard seeds, curry leaves &amp; peanut</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Coconut Rice</span><span class="menu-item-dots"></span><span class="menu-item-price">$9.95</span></div><p class="menu-item-desc">Coconut flavored rice with mustard seeds, curry leaves &amp; peanut</p></div>
-</div>
-</div>
-<!-- Biryani -->
-<div class="menu-category" data-img="1">
-<span class="menu-cat-title reveal">Biryani</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Veg Biryani</span><span class="menu-item-dots"></span><span class="menu-item-price">$16.95</span></div><p class="menu-item-desc">Cooked with basmati rice &amp; aromatic spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chicken Biryani</span><span class="menu-item-dots"></span><span class="menu-item-price">$19.95</span></div><p class="menu-item-desc">Cooked with basmati rice &amp; aromatic spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lamb Biryani</span><span class="menu-item-dots"></span><span class="menu-item-price">$21.95</span></div><p class="menu-item-desc">Cooked with basmati rice &amp; aromatic spices</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Shrimp Biryani</span><span class="menu-item-dots"></span><span class="menu-item-price">$23.95</span></div><p class="menu-item-desc">Cooked with basmati rice &amp; aromatic spices</p></div>
-</div>
-</div>
-<!-- Bread -->
-<div class="menu-category" data-img="2">
-<span class="menu-cat-title reveal">Bread</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Naan</span><span class="menu-item-dots"></span><span class="menu-item-price">$4.95</span></div><p class="menu-item-desc">White flour bread</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Garlic Naan</span><span class="menu-item-dots"></span><span class="menu-item-price">$5.50</span></div><p class="menu-item-desc">White flour bread with garlic</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Onion Kulcha</span><span class="menu-item-dots"></span><span class="menu-item-price">$5.50</span></div><p class="menu-item-desc">White flour bread with onion</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Roti</span><span class="menu-item-dots"></span><span class="menu-item-price">$4.95</span></div><p class="menu-item-desc">Whole wheat bread</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lachcha Paratha</span><span class="menu-item-dots"></span><span class="menu-item-price">$5.95</span></div><p class="menu-item-desc">Multi layered whole wheat bread</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Pudina Paratha</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.25</span></div><p class="menu-item-desc">Multi layered bread topped with fresh mint</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Aloo Paratha</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.95</span></div><p class="menu-item-desc">Spiced potato stuffed bread</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Peshawari Naan</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.95</span></div><p class="menu-item-desc">Nuts &amp; raisins stuffed bread</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Keema Naan</span><span class="menu-item-dots"></span><span class="menu-item-price">$7.50</span></div><p class="menu-item-desc">Minced lamb stuffed bread</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Chilli Garlic Naan</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.25</span></div><p class="menu-item-desc">Spicy garlic flavored naan</p></div>
-</div>
-</div>
-<!-- Desserts -->
-<div class="menu-category" data-img="0">
-<span class="menu-cat-title reveal">Desserts</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Rasmalai</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.00</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Gulab Jamun</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.00</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Gajar Halwa</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.00</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Kheer</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.00</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Kulfi</span><span class="menu-item-dots"></span><span class="menu-item-price">$7.00</span></div></div>
-</div>
-</div>
-<!-- Sides -->
-<div class="menu-category" data-img="1">
-<span class="menu-cat-title reveal">Sides</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Raita</span><span class="menu-item-dots"></span><span class="menu-item-price">$3.50</span></div><p class="menu-item-desc">Cucumber, roasted cumin &amp; cilantro</p></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Mango Chutney</span><span class="menu-item-dots"></span><span class="menu-item-price">$3.50</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Mixed Pickle</span><span class="menu-item-dots"></span><span class="menu-item-price">$3.00</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Papad (2 pcs)</span><span class="menu-item-dots"></span><span class="menu-item-price">$3.00</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Basmati Rice</span><span class="menu-item-dots"></span><span class="menu-item-price">$3.95</span></div></div>
-</div>
-</div>
-<!-- Beverages -->
-<div class="menu-category" data-img="2">
-<span class="menu-cat-title reveal">Beverages</span>
-<div class="menu-items">
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Mango Lassi</span><span class="menu-item-dots"></span><span class="menu-item-price">$6.25</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Sweet Lassi</span><span class="menu-item-dots"></span><span class="menu-item-price">$5.75</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Salted Lassi</span><span class="menu-item-dots"></span><span class="menu-item-price">$5.75</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Coke / Diet Coke / Sprite</span><span class="menu-item-dots"></span><span class="menu-item-price">$3.00</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Ginger Ale</span><span class="menu-item-dots"></span><span class="menu-item-price">$3.00</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Limca / Thums Up</span><span class="menu-item-dots"></span><span class="menu-item-price">$3.50</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Lychee / Orange / Pineapple Juice</span><span class="menu-item-dots"></span><span class="menu-item-price">$4.50</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Perrier</span><span class="menu-item-dots"></span><span class="menu-item-price">$4.75</span></div></div>
-<div class="menu-item reveal"><div class="menu-item-top"><span class="menu-item-name">Poland Spring Water</span><span class="menu-item-dots"></span><span class="menu-item-price">$2.50</span></div></div>
-</div>
+<!-- kora:data:menu layout="list" -->
+<!-- /kora:data:menu -->
 </div>
 </div>
 </div>
@@ -1038,14 +863,16 @@ function setupReveal(selector, xVal, yVal) {
     });
   });
 }
+// The menu is drawn by Kora; give its parts the same reveal-on-scroll as the rest of the page.
+document.querySelectorAll('.kora-menu__item, .kora-menu__section-title').forEach(el => el.classList.add('reveal'));
 setupReveal('.reveal', 0, 30);
 setupReveal('.reveal-left', -40, 0);
 setupReveal('.reveal-right', 40, 0);
 
 // Menu items stagger
 if (!prefersReducedMotion) {
-  document.querySelectorAll('.menu-category').forEach(cat => {
-    const items = cat.querySelectorAll('.menu-item.reveal');
+  document.querySelectorAll('.kora-menu__section').forEach(cat => {
+    const items = cat.querySelectorAll('.kora-menu__item.reveal');
     gsap.to(items, {
       opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.04,
       scrollTrigger: { trigger: cat, start: 'top 80%', toggleActions: 'play none none none' }
@@ -1053,7 +880,7 @@ if (!prefersReducedMotion) {
   });
 
   // Menu category titles
-  gsap.utils.toArray('.menu-cat-title.reveal').forEach(el => {
+  gsap.utils.toArray('.kora-menu__section-title.reveal').forEach(el => {
     gsap.to(el, {
       opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
@@ -1063,7 +890,7 @@ if (!prefersReducedMotion) {
 
 // ===== MENU IMAGE SYNC =====
 const menuParallaxImg = document.getElementById('menuParallaxImg');
-const menuCategories = document.querySelectorAll('.menu-category');
+const menuCategories = document.querySelectorAll('.kora-menu__section');
 
 if (menuParallaxImg && !prefersReducedMotion) {
   menuCategories.forEach((cat, i) => {
@@ -1071,15 +898,15 @@ if (menuParallaxImg && !prefersReducedMotion) {
       trigger: cat,
       start: 'top center',
       end: 'bottom center',
-      onEnter: () => updateMenuImage(cat),
-      onEnterBack: () => updateMenuImage(cat)
+      onEnter: () => updateMenuImage(cat, i),
+      onEnterBack: () => updateMenuImage(cat, i)
     });
   });
 }
 
-function updateMenuImage(cat) {
+function updateMenuImage(cat, i) {
   if (!menuParallaxImg) return;
-  const idx = parseInt(cat.dataset.img) || 0;
+  const idx = i % menuImages.length;
   const newSrc = menuImages[idx];
   if (menuParallaxImg.src !== newSrc) {
     gsap.to(menuParallaxImg, {
